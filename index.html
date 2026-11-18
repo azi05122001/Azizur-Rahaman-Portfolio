@@ -4,9 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Azizur Rahaman — Data Science & Operations</title>
-  <meta name="description" content="CSE Graduate | Data Science Enthusiast | Senior Operations Representative at Concentrix" />
+  <meta name="description" content="CSE Graduate | Data Science Enthusiast | Senior Operations Representative at Concentrix. Portfolio of ML, BI, and full-stack projects." />
+  <meta property="og:title" content="Azizur Rahaman — Data Science Portfolio" />
+  <meta property="og:description" content="Data Science Enthusiast building high-impact analytical pipelines." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
 
-  <!-- Tailwind CSS -->
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -15,21 +19,30 @@
         extend: {
           colors: {
             brand: {
-              50:  '#eef6ff',
-              100: '#d9eaff',
-              200: '#bcd9ff',
-              300: '#8ec1ff',
-              400: '#599dff',
-              500: '#3378ff',
-              600: '#1b56f5',
-              700: '#1442e1',
-              800: '#1736b6',
-              900: '#19338f',
+              50:'#eef6ff',100:'#d9eaff',200:'#bcd9ff',300:'#8ec1ff',400:'#599dff',
+              500:'#3378ff',600:'#1b56f5',700:'#1442e1',800:'#1736b6',900:'#19338f'
             }
           },
           fontFamily: {
-            sans: ['Inter', 'ui-sans-serif', 'system-ui'],
-            display: ['Poppins', 'ui-sans-serif', 'system-ui'],
+            sans: ['Inter','ui-sans-serif','system-ui'],
+            display: ['Poppins','ui-sans-serif','system-ui'],
+          },
+          animation: {
+            'gradient-x': 'gradient-x 8s ease infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'blob': 'blob 7s infinite',
+          },
+          keyframes: {
+            'gradient-x': {
+              '0%,100%': {'background-size':'200% 200%','background-position':'left center'},
+              '50%': {'background-size':'200% 200%','background-position':'right center'},
+            },
+            'float': { '0%,100%':{'transform':'translateY(0)'},'50%':{'transform':'translateY(-12px)'} },
+            'blob': {
+              '0%,100%':{'transform':'translate(0,0) scale(1)'},
+              '33%':{'transform':'translate(30px,-30px) scale(1.1)'},
+              '66%':{'transform':'translate(-20px,20px) scale(0.95)'},
+            }
           }
         }
       }
@@ -40,78 +53,96 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- AOS Animations -->
+  <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-  <!-- Font Awesome Icons -->
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; }
+    body { font-family:'Inter',sans-serif; }
+    h1,h2,h3,h4,.font-display { font-family:'Poppins',sans-serif; }
     .gradient-text {
-      background: linear-gradient(90deg,#3378ff,#8b5cf6,#ec4899);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      background: linear-gradient(90deg,#3378ff,#8b5cf6,#ec4899,#3378ff);
+      background-size: 300% 300%;
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+      animation: gradient-x 8s ease infinite;
     }
-    .glass {
-      backdrop-filter: blur(12px);
-      background: rgba(255,255,255,0.6);
-    }
-    .dark .glass { background: rgba(17,24,39,0.6); }
+    .glass { backdrop-filter: blur(14px); background: rgba(255,255,255,0.65); }
+    .dark .glass { background: rgba(17,24,39,0.65); }
     .mesh-bg {
       background:
-        radial-gradient(at 20% 20%, rgba(51,120,255,0.15) 0px, transparent 50%),
-        radial-gradient(at 80% 10%, rgba(139,92,246,0.15) 0px, transparent 50%),
-        radial-gradient(at 60% 90%, rgba(236,72,153,0.10) 0px, transparent 50%);
+        radial-gradient(at 15% 20%, rgba(51,120,255,0.18) 0px, transparent 50%),
+        radial-gradient(at 85% 15%, rgba(139,92,246,0.18) 0px, transparent 50%),
+        radial-gradient(at 60% 90%, rgba(236,72,153,0.12) 0px, transparent 50%);
     }
-    .project-card:hover .project-img { transform: scale(1.05); }
-    .project-img { transition: transform .5s ease; }
-    html { scroll-behavior: smooth; }
+    .project-card:hover .project-img { transform: scale(1.06); }
+    .project-img { transition: transform .6s cubic-bezier(.2,.9,.2,1); }
+    #cursor, #cursorDot {
+      position: fixed; top:0; left:0; pointer-events:none; z-index:9999;
+      border-radius:9999px; transform: translate(-50%,-50%);
+      transition: transform .15s ease-out, width .2s, height .2s, background .2s;
+    }
+    #cursor { width:36px; height:36px; border:2px solid rgba(51,120,255,.6); }
+    #cursorDot { width:6px; height:6px; background:#3378ff; }
+    .cursor-hover { width:56px !important; height:56px !important; background: rgba(51,120,255,.12) !important; }
+    @media (max-width:768px) { #cursor,#cursorDot { display:none; } }
+    .nav-active { color:#1b56f5 !important; }
+    .dark .nav-active { color:#8ec1ff !important; }
+    .skill-bar-fill { transition: width 1.4s cubic-bezier(.2,.9,.2,1); }
+    .timeline-dot::before {
+      content:''; position:absolute; left:-33px; top:6px;
+      width:14px; height:14px; border-radius:50%;
+      background:#3378ff; box-shadow: 0 0 0 4px rgba(51,120,255,.2);
+    }
+    .dark .timeline-dot::before { box-shadow: 0 0 0 4px rgba(51,120,255,.25); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+    }
   </style>
 </head>
 
-<body class="bg-white dark:bg-gray-950 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+<body class="bg-white dark:bg-gray-950 text-gray-800 dark:text-gray-200 transition-colors duration-300 overflow-x-hidden">
 
-<!-- ============ NAVBAR ============ -->
+<!-- Scroll progress -->
+<div id="scrollProgress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-brand-500 via-purple-500 to-pink-500 z-[60]" style="width:0%"></div>
+
+<!-- Custom cursor -->
+<div id="cursor"></div>
+<div id="cursorDot"></div>
+
+<!-- ================= NAVBAR ================= -->
 <header class="fixed top-0 inset-x-0 z-50">
   <nav class="glass border-b border-gray-200/60 dark:border-gray-800/60">
-    <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
       <a href="#home" class="font-display font-bold text-lg tracking-tight">
         <span class="gradient-text">Azizur.</span>
       </a>
-
-      <ul class="hidden md:flex items-center gap-7 text-sm font-medium">
-        <li><a href="#projects" class="hover:text-brand-600 transition">Projects</a></li>
-        <li><a href="#about"    class="hover:text-brand-600 transition">About</a></li>
-        <li><a href="#experience" class="hover:text-brand-600 transition">Experience</a></li>
-        <li><a href="#education" class="hover:text-brand-600 transition">Education</a></li>
-        <li><a href="#contact"  class="hover:text-brand-600 transition">Contact</a></li>
+      <ul class="hidden md:flex items-center gap-7 text-sm font-medium" id="navLinks">
+        <li><a href="#projects" data-nav class="hover:text-brand-600 transition">Projects</a></li>
+        <li><a href="#about" data-nav class="hover:text-brand-600 transition">About</a></li>
+        <li><a href="#skills" data-nav class="hover:text-brand-600 transition">Skills</a></li>
+        <li><a href="#experience" data-nav class="hover:text-brand-600 transition">Experience</a></li>
+        <li><a href="#education" data-nav class="hover:text-brand-600 transition">Education</a></li>
+        <li><a href="#contact" data-nav class="hover:text-brand-600 transition">Contact</a></li>
       </ul>
-
-      <div class="flex items-center gap-3">
-        <!-- Dark/Light toggle -->
-        <button id="themeToggle" aria-label="Toggle theme"
-          class="w-9 h-9 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+      <div class="flex items-center gap-2">
+        <button id="themeToggle" aria-label="Toggle theme" class="w-9 h-9 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800 transition">
           <i id="themeIcon" class="fa-solid fa-moon text-sm"></i>
         </button>
-        <a href="assets/resume.pdf" download
-           class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-600 hover:bg-brand-700 text-white text-sm font-medium shadow-lg shadow-brand-600/20 transition">
+        <a href="assets/resume.pdf" download class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-600 hover:bg-brand-700 text-white text-sm font-medium shadow-lg shadow-brand-600/20 transition">
           <i class="fa-solid fa-download text-xs"></i> Resume
         </a>
-        <!-- Mobile menu button -->
         <button id="menuBtn" class="md:hidden w-9 h-9 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center">
           <i class="fa-solid fa-bars"></i>
         </button>
       </div>
     </div>
-
-    <!-- Mobile menu -->
     <div id="mobileMenu" class="hidden md:hidden px-5 pb-4">
       <ul class="flex flex-col gap-3 text-sm font-medium">
         <li><a href="#projects" class="block py-1">Projects</a></li>
         <li><a href="#about" class="block py-1">About</a></li>
+        <li><a href="#skills" class="block py-1">Skills</a></li>
         <li><a href="#experience" class="block py-1">Experience</a></li>
         <li><a href="#education" class="block py-1">Education</a></li>
         <li><a href="#contact" class="block py-1">Contact</a></li>
@@ -120,17 +151,31 @@
   </nav>
 </header>
 
-<!-- ============ HERO ============ -->
-<section id="home" class="mesh-bg min-h-screen flex items-center pt-24 pb-16">
-  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-2 gap-12 items-center">
+<!-- ================= HERO ================= -->
+<section id="home" class="mesh-bg relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+  <canvas id="particles" class="absolute inset-0 w-full h-full pointer-events-none opacity-50"></canvas>
 
+  <!-- Blobs -->
+  <div class="absolute -top-20 -left-20 w-72 h-72 bg-brand-400/30 rounded-full blur-3xl animate-blob"></div>
+  <div class="absolute top-40 -right-20 w-72 h-72 bg-purple-400/30 rounded-full blur-3xl animate-blob" style="animation-delay:2s"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 grid md:grid-cols-2 gap-12 items-center w-full">
     <div data-aos="fade-right">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-xs font-medium mb-5">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        Available for opportunities
+      </div>
+
       <p class="text-brand-600 font-medium mb-3 tracking-wide">Hello, I'm</p>
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4">
         Azizur <span class="gradient-text">Rahaman</span>
       </h1>
-      <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mb-6 max-w-xl">
-        Senior Operations Representative at <span class="font-semibold text-gray-800 dark:text-gray-200">Concentrix</span> &amp; Data Science Enthusiast building high-impact analytical pipelines.
+
+      <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mb-2">
+        I'm a <span id="typewriter" class="font-semibold text-gray-800 dark:text-gray-100"></span><span class="text-brand-600 animate-pulse">|</span>
+      </p>
+      <p class="text-base text-gray-600 dark:text-gray-400 mb-6 max-w-xl">
+        Senior Operations Representative at <span class="font-semibold text-gray-800 dark:text-gray-200">Concentrix</span> — building high-impact analytical pipelines with Python, SQL, and Power BI.
       </p>
 
       <div class="flex flex-wrap gap-3 mb-8">
@@ -143,54 +188,71 @@
       </div>
 
       <div class="flex items-center gap-4 text-lg text-gray-500 dark:text-gray-400">
-        <a href="#" aria-label="GitHub" class="hover:text-brand-600 transition"><i class="fa-brands fa-github"></i></a>
-        <a href="#" aria-label="LinkedIn" class="hover:text-brand-600 transition"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="#" aria-label="Email" class="hover:text-brand-600 transition"><i class="fa-solid fa-envelope"></i></a>
-        <a href="#" aria-label="Twitter" class="hover:text-brand-600 transition"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://github.com/azi05122001" target="_blank" aria-label="GitHub" class="hover:text-brand-600 hover:-translate-y-1 transition"><i class="fa-brands fa-github"></i></a>
+        <a href="#" target="_blank" aria-label="LinkedIn" class="hover:text-brand-600 hover:-translate-y-1 transition"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:your-email@example.com" aria-label="Email" class="hover:text-brand-600 hover:-translate-y-1 transition"><i class="fa-solid fa-envelope"></i></a>
+        <a href="#" target="_blank" aria-label="Twitter" class="hover:text-brand-600 hover:-translate-y-1 transition"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://www.kaggle.com/" target="_blank" aria-label="Kaggle" class="hover:text-brand-600 hover:-translate-y-1 transition"><i class="fa-brands fa-kaggle"></i></a>
       </div>
     </div>
 
     <div class="flex justify-center md:justify-end" data-aos="fade-left">
-      <div class="relative">
-        <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-brand-500 via-purple-500 to-pink-500 blur-2xl opacity-30"></div>
+      <div class="relative animate-float">
+        <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-brand-500 via-purple-500 to-pink-500 blur-2xl opacity-40"></div>
         <img src="assets/profile.jpg" alt="Azizur Rahaman"
              class="relative w-64 h-64 sm:w-80 sm:h-80 object-cover rounded-3xl shadow-2xl border-4 border-white dark:border-gray-800" />
+        <div class="absolute -bottom-4 -left-4 px-3 py-2 rounded-xl bg-white dark:bg-gray-900 shadow-lg border border-gray-200 dark:border-gray-800 text-xs">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-chart-line text-brand-600"></i>
+            <span class="font-semibold">2.3+ yrs</span> experience
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <a href="#projects" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-gray-500 hover:text-brand-600 animate-bounce">
+    <i class="fa-solid fa-chevron-down text-xl"></i>
+  </a>
 </section>
 
-<!-- ============ SKILLS STRIP ============ -->
-<section class="py-8 border-y border-gray-200 dark:border-gray-800">
-  <div class="max-w-6xl mx-auto px-5 flex flex-wrap justify-center gap-3">
-    <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">Python</span>
-    <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">SQL</span>
-    <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">Machine Learning</span>
-    <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">Power BI</span>
-    <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">Statistics</span>
-    <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">Data Visualization</span>
-    <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">Full Stack</span>
+<!-- ================= STATS ================= -->
+<section class="py-12 border-y border-gray-200 dark:border-gray-800">
+  <div class="max-w-6xl mx-auto px-5 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <div data-count="7" data-suffix="+"><div class="text-3xl sm:text-4xl font-bold gradient-text">0</div><p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Projects</p></div>
+    <div data-count="2.3" data-suffix="+" data-decimal="1"><div class="text-3xl sm:text-4xl font-bold gradient-text">0</div><p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Years Exp</p></div>
+    <div data-count="3"><div class="text-3xl sm:text-4xl font-bold gradient-text">0</div><p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Certifications</p></div>
+    <div data-count="8.99" data-decimal="2"><div class="text-3xl sm:text-4xl font-bold gradient-text">0</div><p class="text-sm text-gray-600 dark:text-gray-400 mt-1">SGPA</p></div>
   </div>
 </section>
 
-<!-- ============ FEATURED PROJECTS ============ -->
+<!-- ================= PROJECTS ================= -->
 <section id="projects" class="py-20">
-  <div class="max-w-6xl mx-auto px-5">
-    <div class="text-center mb-14" data-aos="fade-up">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-10" data-aos="fade-up">
       <p class="text-brand-600 font-medium mb-2 tracking-wide text-sm uppercase">Portfolio</p>
       <h2 class="text-3xl sm:text-4xl font-bold mb-4">Featured Projects</h2>
       <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-        Real-world problem sets across ML, data visualization, and full-stack development.
+        Real-world problem sets across ML, data visualization, and full-stack development. Click any card for details.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6">
+    <!-- Filter -->
+    <div class="flex flex-wrap justify-center gap-2 mb-10" data-aos="fade-up">
+      <button data-filter="all" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-brand-600 text-white transition">All</button>
+      <button data-filter="ml" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition">Machine Learning</button>
+      <button data-filter="bi" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition">BI &amp; Analytics</button>
+      <button data-filter="web" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition">Web</button>
+    </div>
 
-      <!-- Project 1 -->
-      <article class="project-card group rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-xl transition cursor-pointer"
-               onclick="openProject('sales')" data-aos="fade-up">
-        <div class="h-44 overflow-hidden bg-gray-100 dark:bg-gray-800">
+    <div id="projectsGrid" class="grid md:grid-cols-3 gap-6">
+
+      <article data-cat="ml" class="project-card group rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition cursor-pointer" onclick="openProject('sales')" data-aos="fade-up">
+        <div class="h-44 overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
           <img src="assets/projects/sales.png" alt="Sales Prediction" class="project-img w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end justify-end p-3">
+            <span class="text-white text-xs font-medium">Click for details →</span>
+          </div>
         </div>
         <div class="p-5">
           <div class="flex items-center gap-2 mb-2">
@@ -202,11 +264,12 @@
         </div>
       </article>
 
-      <!-- Project 2 -->
-      <article class="project-card group rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-xl transition cursor-pointer"
-               onclick="openProject('spam')" data-aos="fade-up" data-aos-delay="100">
-        <div class="h-44 overflow-hidden bg-gray-100 dark:bg-gray-800">
+      <article data-cat="ml" class="project-card group rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition cursor-pointer" onclick="openProject('spam')" data-aos="fade-up" data-aos-delay="100">
+        <div class="h-44 overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
           <img src="assets/projects/spam.png" alt="Email Spam Detection" class="project-img w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end justify-end p-3">
+            <span class="text-white text-xs font-medium">Click for details →</span>
+          </div>
         </div>
         <div class="p-5">
           <div class="flex items-center gap-2 mb-2">
@@ -214,15 +277,16 @@
             <span class="text-xs px-2 py-0.5 rounded bg-purple-50 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300">ML</span>
           </div>
           <h3 class="font-semibold text-lg mb-1">Email Spam Detection</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400">Machine learning classifier using text filters to detect spam.</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">ML classifier using text filters to detect spam emails.</p>
         </div>
       </article>
 
-      <!-- Project 3 -->
-      <article class="project-card group rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-xl transition cursor-pointer"
-               onclick="openProject('powerbi')" data-aos="fade-up" data-aos-delay="200">
-        <div class="h-44 overflow-hidden bg-gray-100 dark:bg-gray-800">
+      <article data-cat="bi" class="project-card group rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition cursor-pointer" onclick="openProject('powerbi')" data-aos="fade-up" data-aos-delay="200">
+        <div class="h-44 overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
           <img src="assets/projects/powerbi.png" alt="Power BI Dashboard" class="project-img w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end justify-end p-3">
+            <span class="text-white text-xs font-medium">Click for details →</span>
+          </div>
         </div>
         <div class="p-5">
           <div class="flex items-center gap-2 mb-2">
@@ -238,52 +302,113 @@
   </div>
 </section>
 
-<!-- ============ ABOUT ============ -->
+<!-- ================= ABOUT ================= -->
 <section id="about" class="py-20 bg-gray-50 dark:bg-gray-900/50">
-  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-2 gap-12 items-center">
-    <div data-aos="fade-right">
+  <div class="max-w-7xl mx-auto px-5 grid md:grid-cols-5 gap-12 items-center">
+    <div class="md:col-span-3" data-aos="fade-right">
       <p class="text-brand-600 font-medium mb-2 tracking-wide text-sm uppercase">About Me</p>
-      <h2 class="text-3xl sm:text-4xl font-bold mb-6">Bridging Operations & Data Science</h2>
+      <h2 class="text-3xl sm:text-4xl font-bold mb-6">Bridging Operations &amp; Data Science</h2>
       <p class="text-gray-600 dark:text-gray-400 mb-4">
         I started as a CSE graduate fascinated by how data could tell stories. Today, I'm a
         <strong class="text-gray-800 dark:text-gray-200">Senior Operations Representative</strong> at Concentrix,
-        applying that curiosity to optimize enterprise workflows, while continuously exploring machine learning and data visualization.
+        applying that curiosity to optimize enterprise workflows — while continuously exploring machine learning and data visualization.
       </p>
       <p class="text-gray-600 dark:text-gray-400 mb-6">
-        My goal: map real-world data systems into high-impact analytical pipelines.
+        My goal: map real-world data systems into high-impact analytical pipelines. When I'm not working, you'll find me
+        traveling, gaming, listening to music, or playing cricket.
       </p>
-
-      <div class="grid grid-cols-2 gap-4 text-sm">
-        <div><span class="font-semibold">📍 Location:</span> Kolkata, India</div>
-        <div><span class="font-semibold">💼 Experience:</span> 2.3+ Years</div>
-        <div><span class="font-semibold">🎓 Degree:</span> B.Tech CSE (8.99 SGPA)</div>
-        <div><span class="font-semibold">🌐 Languages:</span> English, Hindi, Bengali</div>
+      <div class="grid sm:grid-cols-2 gap-3 text-sm">
+        <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-600 w-4"></i> Kolkata, West Bengal, India</div>
+        <div class="flex items-center gap-2"><i class="fa-solid fa-briefcase text-brand-600 w-4"></i> 2.3+ Years experience</div>
+        <div class="flex items-center gap-2"><i class="fa-solid fa-graduation-cap text-brand-600 w-4"></i> B.Tech CSE · 8.99 SGPA</div>
+        <div class="flex items-center gap-2"><i class="fa-solid fa-language text-brand-600 w-4"></i> English · Hindi · Bengali</div>
       </div>
     </div>
 
-    <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
-      <div class="rounded-2xl p-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
-        <div class="text-3xl font-bold gradient-text">7+</div>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Projects Completed</p>
+    <div class="md:col-span-2 rounded-2xl p-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-lg" data-aos="fade-left">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Currently Learning</span>
       </div>
-      <div class="rounded-2xl p-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
-        <div class="text-3xl font-bold gradient-text">2.3+</div>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Years Experience</p>
-      </div>
-      <div class="rounded-2xl p-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
-        <div class="text-3xl font-bold gradient-text">3</div>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Certifications</p>
-      </div>
-      <div class="rounded-2xl p-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
-        <div class="text-3xl font-bold gradient-text">8.99</div>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">B.Tech SGPA</p>
-      </div>
+      <ul class="space-y-3 text-sm">
+        <li class="flex items-start gap-2"><i class="fa-solid fa-book-open text-brand-600 mt-0.5"></i> Deep Learning with PyTorch</li>
+        <li class="flex items-start gap-2"><i class="fa-solid fa-chart-pie text-brand-600 mt-0.5"></i> Advanced DAX in Power BI</li>
+        <li class="flex items-start gap-2"><i class="fa-solid fa-cloud text-brand-600 mt-0.5"></i> AWS Cloud Practitioner</li>
+        <li class="flex items-start gap-2"><i class="fa-solid fa-database text-brand-600 mt-0.5"></i> SQL for Analytics (advanced)</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- ============ EXPERIENCE ============ -->
-<section id="experience" class="py-20">
+<!-- ================= SKILLS ================= -->
+<section id="skills" class="py-20">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-14" data-aos="fade-up">
+      <p class="text-brand-600 font-medium mb-2 tracking-wide text-sm uppercase">Tech Stack</p>
+      <h2 class="text-3xl sm:text-4xl font-bold">Skills &amp; Tools</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-10">
+      <div data-aos="fade-right">
+        <h3 class="font-semibold mb-5 flex items-center gap-2"><i class="fa-solid fa-code text-brand-600"></i> Programming &amp; Data</h3>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between text-sm mb-1"><span>Python</span><span class="text-gray-500">90%</span></div>
+            <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden"><div class="skill-bar-fill h-full bg-gradient-to-r from-brand-500 to-purple-500" data-width="90%" style="width:0%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1"><span>SQL</span><span class="text-gray-500">85%</span></div>
+            <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden"><div class="skill-bar-fill h-full bg-gradient-to-r from-brand-500 to-purple-500" data-width="85%" style="width:0%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1"><span>Machine Learning</span><span class="text-gray-500">80%</span></div>
+            <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden"><div class="skill-bar-fill h-full bg-gradient-to-r from-brand-500 to-purple-500" data-width="80%" style="width:0%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1"><span>Statistics</span><span class="text-gray-500">75%</span></div>
+            <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden"><div class="skill-bar-fill h-full bg-gradient-to-r from-brand-500 to-purple-500" data-width="75%" style="width:0%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div data-aos="fade-left">
+        <h3 class="font-semibold mb-5 flex items-center gap-2"><i class="fa-solid fa-chart-simple text-brand-600"></i> BI &amp; Web</h3>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between text-sm mb-1"><span>Power BI</span><span class="text-gray-500">88%</span></div>
+            <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden"><div class="skill-bar-fill h-full bg-gradient-to-r from-amber-400 to-orange-500" data-width="88%" style="width:0%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1"><span>Excel</span><span class="text-gray-500">85%</span></div>
+            <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden"><div class="skill-bar-fill h-full bg-gradient-to-r from-emerald-400 to-green-500" data-width="85%" style="width:0%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1"><span>HTML / CSS / JS</span><span class="text-gray-500">70%</span></div>
+            <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden"><div class="skill-bar-fill h-full bg-gradient-to-r from-pink-400 to-rose-500" data-width="70%" style="width:0%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1"><span>C / Data Structures</span><span class="text-gray-500">75%</span></div>
+            <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden"><div class="skill-bar-fill h-full bg-gradient-to-r from-cyan-400 to-blue-500" data-width="75%" style="width:0%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-2 mt-12" data-aos="fade-up">
+      <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">Pandas</span>
+      <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">NumPy</span>
+      <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">scikit-learn</span>
+      <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">Matplotlib</span>
+      <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">Seaborn</span>
+      <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">Git &amp; GitHub</span>
+      <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">Jupyter</span>
+      <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">R</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience" class="py-20 bg-gray-50 dark:bg-gray-900/50">
   <div class="max-w-4xl mx-auto px-5">
     <div class="text-center mb-14" data-aos="fade-up">
       <p class="text-brand-600 font-medium mb-2 tracking-wide text-sm uppercase">Career</p>
@@ -291,23 +416,19 @@
     </div>
 
     <div class="relative border-l-2 border-brand-200 dark:border-brand-900 ml-4 space-y-10">
-      <!-- Item 1 -->
-      <div class="relative pl-8" data-aos="fade-up">
-        <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-brand-600 ring-4 ring-white dark:ring-gray-950"></span>
+      <div class="relative pl-8 timeline-dot" data-aos="fade-up">
         <div class="flex flex-wrap items-center gap-3 mb-1">
           <h3 class="font-semibold text-lg">Senior Operations Representative</h3>
-          <span class="text-xs px-2 py-0.5 rounded bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">Current</span>
+          <span class="text-xs px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">Current</span>
         </div>
         <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Concentrix · Apr 2026 – Present</p>
         <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-400 space-y-1">
           <li>Manage end-to-end operational pipelines and data verification steps.</li>
-          <li>Analyze service delivery trends, identifying optimizations that reduced response time.</li>
+          <li>Analyze service delivery trends to identify optimization avenues.</li>
         </ul>
       </div>
 
-      <!-- Item 2 -->
-      <div class="relative pl-8" data-aos="fade-up">
-        <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-400 dark:bg-gray-600 ring-4 ring-white dark:ring-gray-950"></span>
+      <div class="relative pl-8 timeline-dot" data-aos="fade-up">
         <h3 class="font-semibold text-lg mb-1">CCOD Engineer</h3>
         <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Wipro · Jul 2024 – Mar 2026</p>
         <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-400 space-y-1">
@@ -319,127 +440,162 @@
   </div>
 </section>
 
-<!-- ============ EDUCATION & CERTS ============ -->
-<section id="education" class="py-20 bg-gray-50 dark:bg-gray-900/50">
-  <div class="max-w-6xl mx-auto px-5">
+<!-- ================= EDUCATION ================= -->
+<section id="education" class="py-20">
+  <div class="max-w-7xl mx-auto px-5">
     <div class="text-center mb-14" data-aos="fade-up">
       <p class="text-brand-600 font-medium mb-2 tracking-wide text-sm uppercase">Learning</p>
       <h2 class="text-3xl sm:text-4xl font-bold">Education &amp; Certifications</h2>
     </div>
 
     <div class="grid md:grid-cols-2 gap-6">
-      <!-- Education column -->
       <div class="space-y-4" data-aos="fade-right">
-        <div class="p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
+        <div class="p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-brand-400 transition">
           <div class="flex justify-between text-sm text-gray-500 dark:text-gray-400 mb-1"><span>2020 – 2024</span><span>SGPA 8.99/10</span></div>
           <h3 class="font-semibold">B.Tech in Computer Science</h3>
           <p class="text-sm text-gray-600 dark:text-gray-400">Meghnad Saha Institute of Technology, MAKAUT</p>
         </div>
-        <div class="p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
+        <div class="p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-brand-400 transition">
           <div class="flex justify-between text-sm text-gray-500 dark:text-gray-400 mb-1"><span>2018 – 2020</span><span>87%</span></div>
           <h3 class="font-semibold">Higher Secondary</h3>
           <p class="text-sm text-gray-600 dark:text-gray-400">Sanskar Vidya, CBSE, Aurangabad</p>
         </div>
-        <div class="p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
+        <div class="p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-brand-400 transition">
           <div class="flex justify-between text-sm text-gray-500 dark:text-gray-400 mb-1"><span>2016 – 2018</span><span>83.2%</span></div>
           <h3 class="font-semibold">Secondary School</h3>
           <p class="text-sm text-gray-600 dark:text-gray-400">South Point High School, CBSE</p>
         </div>
       </div>
 
-      <!-- Certs column -->
       <div class="space-y-4" data-aos="fade-left">
-        <div class="p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
-          <div class="text-sm text-brand-600 mb-1">2024</div>
+        <div class="p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-brand-400 transition">
+          <div class="flex justify-between items-start mb-2">
+            <div class="text-sm text-brand-600 font-medium">2024</div>
+            <a href="#" class="text-xs text-brand-600 hover:underline">Verify <i class="fa-solid fa-external-link text-[10px]"></i></a>
+          </div>
           <h3 class="font-semibold">Data Science Masters Program</h3>
           <p class="text-sm text-gray-600 dark:text-gray-400">Data Brio Academy — Python, ML, Power BI, SQL, Statistics</p>
         </div>
-        <div class="p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
-          <div class="text-sm text-brand-600 mb-1">2022 – 2023</div>
+        <div class="p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-brand-400 transition">
+          <div class="flex justify-between items-start mb-2">
+            <div class="text-sm text-brand-600 font-medium">2022 – 2023</div>
+            <a href="#" class="text-xs text-brand-600 hover:underline">Verify <i class="fa-solid fa-external-link text-[10px]"></i></a>
+          </div>
           <h3 class="font-semibold">Programmer Certification</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400">Amity Computer Academy — C, Data Structures, Advanced Python</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Amity Computer Academy — C, DS, Advanced Python</p>
         </div>
-        <div class="p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
-          <div class="text-sm text-brand-600 mb-1">2022</div>
+        <div class="p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-brand-400 transition">
+          <div class="flex justify-between items-start mb-2">
+            <div class="text-sm text-brand-600 font-medium">2022</div>
+            <a href="#" class="text-xs text-brand-600 hover:underline">Verify <i class="fa-solid fa-external-link text-[10px]"></i></a>
+          </div>
           <h3 class="font-semibold">Frontend Web Dev Intern</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400">CSI Bhawanipore — HTML5, CSS3, JavaScript, Bootstrap</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">CSI Bhawanipore — HTML5, CSS3, JS, Bootstrap</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ CONTACT ============ -->
-<section id="contact" class="py-20">
-  <div class="max-w-3xl mx-auto px-5 text-center" data-aos="fade-up">
-    <p class="text-brand-600 font-medium mb-2 tracking-wide text-sm uppercase">Let's Connect</p>
-    <h2 class="text-3xl sm:text-4xl font-bold mb-4">Get In Touch</h2>
-    <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-xl mx-auto">
-      Open to opportunities in data science, analytics, or full-stack development. Feel free to reach out!
-    </p>
-
-    <div class="flex flex-wrap justify-center gap-3 mb-8">
-      <a href="mailto:your-email@example.com"
-         class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-600 hover:bg-brand-700 text-white text-sm font-medium shadow-lg shadow-brand-600/25 transition">
-        <i class="fa-solid fa-envelope text-xs"></i> Email Me
-      </a>
-      <a href="https://linkedin.com/in/your-handle" target="_blank"
-         class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium transition">
-        <i class="fa-brands fa-linkedin"></i> LinkedIn
-      </a>
-      <a href="https://github.com/azi05122001" target="_blank"
-         class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium transition">
-        <i class="fa-brands fa-github"></i> GitHub
-      </a>
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="py-20 bg-gray-50 dark:bg-gray-900/50">
+  <div class="max-w-3xl mx-auto px-5" data-aos="fade-up">
+    <div class="text-center mb-10">
+      <p class="text-brand-600 font-medium mb-2 tracking-wide text-sm uppercase">Let's Connect</p>
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">Get In Touch</h2>
+      <p class="text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
+        Open to opportunities in data science, analytics, or full-stack development. Drop a message below!
+      </p>
     </div>
+
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST"
+          class="bg-white dark:bg-gray-900 rounded-2xl p-6 border border-gray-200 dark:border-gray-800 shadow-lg space-y-4">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="text-sm font-medium mb-1 block">Name</label>
+          <input type="text" name="name" required
+                 class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm" />
+        </div>
+        <div>
+          <label class="text-sm font-medium mb-1 block">Email</label>
+          <input type="email" name="email" required
+                 class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm" />
+        </div>
+      </div>
+      <div>
+        <label class="text-sm font-medium mb-1 block">Message</label>
+        <textarea name="message" rows="4" required
+                  class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm resize-none"></textarea>
+      </div>
+      <div class="flex flex-wrap gap-3 justify-between items-center">
+        <button type="submit" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-600 hover:bg-brand-700 text-white text-sm font-medium shadow-lg shadow-brand-600/25 transition">
+          Send Message <i class="fa-solid fa-paper-plane text-xs"></i>
+        </button>
+        <div class="flex gap-3 text-gray-500">
+          <a href="mailto:your-email@example.com" class="hover:text-brand-600 transition"><i class="fa-solid fa-envelope"></i></a>
+          <a href="#" target="_blank" class="hover:text-brand-600 transition"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://github.com/azi05122001" target="_blank" class="hover:text-brand-600 transition"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+    </form>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
+<!-- ================= FOOTER ================= -->
 <footer class="border-t border-gray-200 dark:border-gray-800 py-6">
-  <div class="max-w-6xl mx-auto px-5 flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-gray-500 dark:text-gray-500">
+  <div class="max-w-7xl mx-auto px-5 flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-gray-500 dark:text-gray-500">
     <p>© <span id="year"></span> Azizur Rahaman. All rights reserved.</p>
-    <p>Built with ❤️ using Tailwind CSS</p>
+    <p>Built with ❤️ · Tailwind + AOS</p>
   </div>
 </footer>
 
-<!-- ============ PROJECT MODAL ============ -->
-<div id="projectModal" class="hidden fixed inset-0 z-50 bg-black/60 items-center justify-center p-4">
-  <div class="bg-white dark:bg-gray-900 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+<!-- Back to top -->
+<button id="backToTop" class="fixed bottom-6 right-6 w-11 h-11 rounded-full bg-brand-600 hover:bg-brand-700 text-white shadow-lg shadow-brand-600/30 flex items-center justify-center opacity-0 translate-y-4 pointer-events-none transition-all z-40">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<!-- ================= PROJECT MODAL ================= -->
+<div id="projectModal" class="hidden fixed inset-0 z-[55] bg-black/70 items-center justify-center p-4">
+  <div class="bg-white dark:bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
     <div class="relative">
-      <img id="modalImg" src="" alt="" class="w-full h-64 object-cover rounded-t-2xl" />
-      <button onclick="closeProject()" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition">
+      <img id="modalImg" src="" alt="" class="w-full h-56 sm:h-72 object-cover rounded-t-2xl" />
+      <button onclick="closeProject()" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center transition">
         <i class="fa-solid fa-xmark"></i>
       </button>
+      <div id="modalThumbs" class="absolute bottom-3 left-3 flex gap-2"></div>
     </div>
     <div class="p-6">
       <h3 id="modalTitle" class="text-2xl font-bold mb-2"></h3>
       <div id="modalTags" class="flex flex-wrap gap-2 mb-4"></div>
-      <div id="modalBody" class="space-y-4 text-sm text-gray-600 dark:text-gray-400"></div>
+      <div id="modalBody" class="space-y-3 text-sm text-gray-600 dark:text-gray-400"></div>
+      <div class="flex flex-wrap gap-3 mt-6 pt-4 border-t border-gray-200 dark:border-gray-800">
+        <a id="modalLive" href="#" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-600 hover:bg-brand-700 text-white text-sm font-medium transition">
+          <i class="fa-solid fa-up-right-from-square text-xs"></i> Live Demo
+        </a>
+        <a id="modalCode" href="#" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium transition">
+          <i class="fa-brands fa-github"></i> View Code
+        </a>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- ============ SCRIPTS ============ -->
+<!-- ================= SCRIPTS ================= -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  // AOS init
+  /* ---------- Init ---------- */
   AOS.init({ duration: 700, once: true, offset: 80 });
-
-  // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Theme toggle
+  /* ---------- Theme ---------- */
   const html = document.documentElement;
   const themeToggle = document.getElementById('themeToggle');
   const themeIcon = document.getElementById('themeIcon');
-
   if (localStorage.getItem('theme') === 'dark' ||
       (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     html.classList.add('dark');
     themeIcon.className = 'fa-solid fa-sun text-sm';
   }
-
   themeToggle.addEventListener('click', () => {
     html.classList.toggle('dark');
     const isDark = html.classList.contains('dark');
@@ -447,80 +603,241 @@
     themeIcon.className = isDark ? 'fa-solid fa-sun text-sm' : 'fa-solid fa-moon text-sm';
   });
 
-  // Mobile menu
+  /* ---------- Mobile menu ---------- */
   document.getElementById('menuBtn').addEventListener('click', () => {
     document.getElementById('mobileMenu').classList.toggle('hidden');
   });
+  document.querySelectorAll('#mobileMenu a').forEach(a =>
+    a.addEventListener('click', () => document.getElementById('mobileMenu').classList.add('hidden'))
+  );
 
-  // Project data
+  /* ---------- Scroll progress + back-to-top + nav highlight ---------- */
+  const progress = document.getElementById('scrollProgress');
+  const backToTop = document.getElementById('backToTop');
+  const navItems = document.querySelectorAll('[data-nav]');
+  const sections = [...document.querySelectorAll('section[id]')];
+
+  function onScroll() {
+    const scrollTop = window.scrollY;
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (scrollTop / docH * 100) + '%';
+
+    if (scrollTop > 400) {
+      backToTop.classList.remove('opacity-0','translate-y-4','pointer-events-none');
+    } else {
+      backToTop.classList.add('opacity-0','translate-y-4','pointer-events-none');
+    }
+
+    let current = '';
+    sections.forEach(s => { if (scrollTop >= s.offsetTop - 120) current = s.id; });
+    navItems.forEach(a => {
+      a.classList.toggle('nav-active', a.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ---------- Typewriter ---------- */
+  const roles = ['Data Scientist', 'ML Enthusiast', 'BI Analyst', 'Operations Engineer', 'Problem Solver'];
+  const tw = document.getElementById('typewriter');
+  let ri = 0, ci = 0, deleting = false;
+  function tick() {
+    const word = roles[ri];
+    if (!deleting) {
+      tw.textContent = word.slice(0, ++ci);
+      if (ci === word.length) { deleting = true; return setTimeout(tick, 1600); }
+    } else {
+      tw.textContent = word.slice(0, --ci);
+      if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; }
+    }
+    setTimeout(tick, deleting ? 45 : 90);
+  }
+  tick();
+
+  /* ---------- Count-up stats ---------- */
+  const statEls = document.querySelectorAll('[data-count]');
+  const statObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseFloat(el.dataset.count);
+      const decimals = parseInt(el.dataset.decimal || '0');
+      const suffix = el.dataset.suffix || '';
+      const label = el.querySelector('div');
+      let start = 0;
+      const dur = 1400, t0 = performance.now();
+      function frame(t) {
+        const p = Math.min((t - t0) / dur, 1);
+        const val = (start + (target - start) * (1 - Math.pow(1 - p, 3))).toFixed(decimals);
+        label.textContent = val + suffix;
+        if (p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+      statObs.unobserve(el);
+    });
+  }, { threshold: 0.4 });
+  statEls.forEach(el => statObs.observe(el));
+
+  /* ---------- Skill bars ---------- */
+  const skillObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.width = e.target.dataset.width;
+        skillObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.skill-bar-fill').forEach(b => skillObs.observe(b));
+
+  /* ---------- Project filter ---------- */
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('bg-brand-600','text-white');
+        b.classList.add('border','border-gray-300','dark:border-gray-700');
+      });
+      btn.classList.add('bg-brand-600','text-white');
+      btn.classList.remove('border','border-gray-300','dark:border-gray-700');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('#projectsGrid article').forEach(card => {
+        const show = f === 'all' || card.dataset.cat === f;
+        card.style.display = show ? '' : 'none';
+      });
+    });
+  });
+
+  /* ---------- Project modal ---------- */
   const projects = {
     sales: {
       title: 'Sales Prediction Model using ML',
-      img: 'assets/projects/sales.png',
-      tags: ['Python', 'Pandas', 'scikit-learn', 'Matplotlib'],
+      imgs: ['assets/projects/sales.png','assets/projects/sales-2.png'],
+      tags: ['Python','Pandas','scikit-learn','Matplotlib'],
+      live: '#', code: '#',
       body: `
-        <p><strong>Problem:</strong> Businesses struggle to forecast sales across multiple stores, leading to inventory mismatches.</p>
-        <p><strong>Solution:</strong> Built a regression model using historical sales data to predict future store sales.</p>
+        <p><strong>Problem:</strong> Businesses struggle to forecast store sales, causing inventory mismatches.</p>
+        <p><strong>Solution:</strong> Built a regression model using historical sales data to predict future sales.</p>
         <p><strong>Process:</strong> Data cleaning → feature engineering → model selection (Random Forest vs. Linear Regression) → evaluation.</p>
         <p><strong>Result:</strong> Achieved strong predictive accuracy, enabling data-driven restocking decisions.</p>
-        <p><a href="#" target="_blank" class="text-brand-600 hover:underline">View on GitHub →</a></p>
       `
     },
     spam: {
       title: 'Email Spam Detection',
-      img: 'assets/projects/spam.png',
-      tags: ['Python', 'NLP', 'scikit-learn', 'TF-IDF'],
+      imgs: ['assets/projects/spam.png','assets/projects/spam-2.png'],
+      tags: ['Python','NLP','scikit-learn','TF-IDF'],
+      live: '#', code: '#',
       body: `
         <p><strong>Problem:</strong> Inboxes get flooded with spam and phishing emails.</p>
         <p><strong>Solution:</strong> Trained a text classification model to distinguish spam from legitimate emails.</p>
         <p><strong>Process:</strong> Text preprocessing → TF-IDF vectorization → Naive Bayes / SVM classifier → evaluation.</p>
         <p><strong>Result:</strong> High classification accuracy on the test dataset.</p>
-        <p><a href="#" target="_blank" class="text-brand-600 hover:underline">View on GitHub →</a></p>
       `
     },
     powerbi: {
       title: 'Power BI Sales Dashboard',
-      img: 'assets/projects/powerbi.png',
-      tags: ['Power BI', 'DAX', 'Excel', 'Data Modeling'],
+      imgs: ['assets/projects/powerbi.png','assets/projects/powerbi-2.png'],
+      tags: ['Power BI','DAX','Excel','Data Modeling'],
+      live: '#', code: '#',
       body: `
         <p><strong>Problem:</strong> Enterprise teams lacked a unified view of geographic sales operations.</p>
         <p><strong>Solution:</strong> Designed an interactive Power BI dashboard with dynamic filters and drill-downs.</p>
         <p><strong>Process:</strong> Data modeling → DAX measures → visual layout → interactivity.</p>
         <p><strong>Result:</strong> Enabled stakeholders to track KPIs and regional performance in real time.</p>
-        <p><a href="#" target="_blank" class="text-brand-600 hover:underline">View on GitHub →</a></p>
       `
     }
   };
 
   function openProject(key) {
     const p = projects[key];
-    document.getElementById('modalImg').src = p.img;
+    const img = document.getElementById('modalImg');
+    img.src = p.imgs[0];
     document.getElementById('modalTitle').textContent = p.title;
-    document.getElementById('modalTags').innerHTML = p.tags
-      .map(t => `<span class="text-xs px-2 py-0.5 rounded bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">${t}</span>`)
-      .join('');
+    document.getElementById('modalTags').innerHTML = p.tags.map(t =>
+      `<span class="text-xs px-2 py-0.5 rounded bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">${t}</span>`
+    ).join('');
     document.getElementById('modalBody').innerHTML = p.body;
-    const modal = document.getElementById('projectModal');
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
+    document.getElementById('modalLive').href = p.live;
+    document.getElementById('modalCode').href = p.code;
+
+    const thumbs = document.getElementById('modalThumbs');
+    thumbs.innerHTML = p.imgs.length > 1
+      ? p.imgs.map((s,i) =>
+          `<button onclick="document.getElementById('modalImg').src='${s}'" class="w-12 h-12 rounded border-2 ${i===0?'border-white':'border-white/40'} overflow-hidden bg-gray-200"><img src="${s}" class="w-full h-full object-cover"/></button>`
+        ).join('')
+      : '';
+
+    const m = document.getElementById('projectModal');
+    m.classList.remove('hidden'); m.classList.add('flex');
     document.body.style.overflow = 'hidden';
   }
-
   function closeProject() {
-    const modal = document.getElementById('projectModal');
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
+    const m = document.getElementById('projectModal');
+    m.classList.add('hidden'); m.classList.remove('flex');
     document.body.style.overflow = '';
   }
-
-  // Close modal on backdrop click / ESC
   document.getElementById('projectModal').addEventListener('click', (e) => {
     if (e.target.id === 'projectModal') closeProject();
   });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeProject();
-  });
-</script>
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeProject(); });
 
+  /* ---------- Custom cursor ---------- */
+  const cur = document.getElementById('cursor');
+  const dot = document.getElementById('cursorDot');
+  let mx = 0, my = 0, cx = 0, cy = 0;
+  window.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; dot.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`; });
+  function loop() {
+    cx += (mx - cx) * 0.18; cy += (my - cy) * 0.18;
+    cur.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%)`;
+    requestAnimationFrame(loop);
+  }
+  loop();
+  document.querySelectorAll('a,button,.project-card').forEach(el => {
+    el.addEventListener('mouseenter', () => cur.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave', () => cur.classList.remove('cursor-hover'));
+  });
+
+  /* ---------- Particle network ---------- */
+  (function () {
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let W, H, pts = [];
+    function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+    function init() {
+      resize();
+      const count = Math.min(60, Math.floor(W * H / 14000));
+      pts = Array.from({ length: count }, () => ({
+        x: Math.random() * W, y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
+        r: Math.random() * 1.5 + 0.5,
+      }));
+    }
+    function step() {
+      ctx.clearRect(0, 0, W, H);
+      const col = html.classList.contains('dark') ? 'rgba(142,193,255,' : 'rgba(51,120,255,';
+      pts.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > W) p.vx *= -1;
+        if (p.y < 0 || p.y > H) p.vy *= -1;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = col + '0.7)'; ctx.fill();
+      });
+      for (let i = 0; i < pts.length; i++) {
+        for (let j = i + 1; j < pts.length; j++) {
+          const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+          const d = Math.hypot(dx, dy);
+          if (d < 120) {
+            ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y);
+            ctx.strokeStyle = col + (0.15 * (1 - d / 120)) + ')';
+            ctx.lineWidth = 1; ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(step);
+    }
+    init(); step();
+    window.addEventListener('resize', init);
+  })();
+</script>
 </body>
 </html>
