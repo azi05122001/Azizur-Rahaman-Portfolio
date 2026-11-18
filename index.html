@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Azizur Rahaman — Data Science & Analytics Portfolio</title>
-  <meta name="description" content="CSE Graduate | Data Science Enthusiast | Former Senior Operations Rep at Concentrix. Portfolio of ML, BI, and full-stack projects including SEM analysis, loan prediction, and invoice tracking." />
+  <meta name="description" content="CSE Graduate | Data Science Enthusiast | PGDBA Candidate. Portfolio of ML, BI, Tableau, and full-stack projects including SEM analysis, loan prediction, and invoice tracking." />
   <meta property="og:title" content="Azizur Rahaman — Data Science Portfolio" />
-  <meta property="og:description" content="ML, BI & full-stack projects. Open to opportunities." />
+  <meta property="og:description" content="ML, BI, Tableau & full-stack projects. Open to opportunities." />
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
 
@@ -18,12 +18,11 @@
         extend: {
           colors: { brand: { 50:'#eef6ff',100:'#d9eaff',200:'#bcd9ff',300:'#8ec1ff',400:'#599dff',500:'#3378ff',600:'#1b56f5',700:'#1442e1',800:'#1736b6',900:'#19338f' } },
           fontFamily: { sans:['Inter','ui-sans-serif','system-ui'], display:['Poppins','ui-sans-serif','system-ui'] },
-          animation: { 'gradient-x':'gradient-x 8s ease infinite','float':'float 6s ease-in-out infinite','blob':'blob 7s infinite','slide-in':'slide-in .4s cubic-bezier(.2,.9,.2,1)' },
+          animation: { 'gradient-x':'gradient-x 8s ease infinite','float':'float 6s ease-in-out infinite','blob':'blob 7s infinite' },
           keyframes: {
             'gradient-x': { '0%,100%':{'background-size':'200% 200%','background-position':'left center'},'50%':{'background-size':'200% 200%','background-position':'right center'} },
             'float': { '0%,100%':{'transform':'translateY(0)'},'50%':{'transform':'translateY(-12px)'} },
-            'blob': { '0%,100%':{'transform':'translate(0,0) scale(1)'},'33%':{'transform':'translate(30px,-30px) scale(1.1)'},'66%':{'transform':'translate(-20px,20px) scale(0.95)'} },
-            'slide-in': { '0%':{'transform':'translateX(100%)','opacity':0},'100%':{'transform':'translateX(0)','opacity':1} }
+            'blob': { '0%,100%':{'transform':'translate(0,0) scale(1)'},'33%':{'transform':'translate(30px,-30px) scale(1.1)'},'66%':{'transform':'translate(-20px,20px) scale(0.95)'} }
           }
         }
       }
@@ -60,11 +59,12 @@
     .dark .timeline-dot::before { box-shadow: 0 0 0 4px rgba(51,120,255,.25); }
     .drawer { transition: transform .45s cubic-bezier(.2,.9,.2,1); }
     .drawer.closed { transform: translateX(100%); }
-    .tab-btn.active { background:#1b56f5; color:white; }
     .toast { position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(80px); opacity:0; transition:all .35s cubic-bezier(.2,.9,.2,1); z-index:70; }
     .toast.show { transform:translateX(-50%) translateY(0); opacity:1; }
     .timeline-item:hover .timeline-details { max-height:200px; opacity:1; }
     .timeline-details { max-height:0; opacity:0; overflow:hidden; transition:max-height .4s ease,opacity .3s ease; }
+    .program-badge { transition: transform .2s ease, box-shadow .2s ease; }
+    .program-badge:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
     @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:.001ms!important; transition-duration:.001ms!important; } }
   </style>
 </head>
@@ -137,7 +137,7 @@
         I'm a <span id="typewriter" class="font-semibold text-gray-800 dark:text-gray-100"></span><span class="text-brand-600 animate-pulse">|</span>
       </p>
       <p class="text-base text-gray-600 dark:text-gray-400 mb-6 max-w-xl">
-        CSE Graduate, ex-Concentrix Senior Ops Rep. Now building ML pipelines, BI dashboards, and full-stack data apps — from SEM-based factor analysis to end-to-end invoice systems.
+        CSE Graduate, PGDBA candidate, ex-Concentrix Senior Ops Rep. Building ML pipelines, BI dashboards, Tableau analytics, and full-stack data apps.
       </p>
 
       <div class="flex flex-wrap gap-3 mb-8">
@@ -159,7 +159,7 @@
         <a href="#" target="_blank" class="hover:text-brand-600 hover:-translate-y-1 transition" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
       </div>
 
-      <p class="text-xs text-gray-500 mt-6"><i class="fa-regular fa-keyboard mr-1"></i> Pro tip: press <kbd class="px-1.5 py-0.5 rounded border border-gray-300 dark:border-gray-700 text-[10px]">1</kbd>–<kbd class="px-1.5 py-0.5 rounded border border-gray-300 dark:border-gray-700 text-[10px]">5</kbd> to open any project</p>
+      <p class="text-xs text-gray-500 mt-6"><i class="fa-regular fa-keyboard mr-1"></i> Press <kbd class="px-1.5 py-0.5 rounded border border-gray-300 dark:border-gray-700 text-[10px]">1</kbd>–<kbd class="px-1.5 py-0.5 rounded border border-gray-300 dark:border-gray-700 text-[10px]">6</kbd> to open any project</p>
     </div>
 
     <div class="flex justify-center md:justify-end" data-aos="fade-left">
@@ -167,7 +167,7 @@
         <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-brand-500 via-purple-500 to-pink-500 blur-2xl opacity-40"></div>
         <img src="assets/profile.jpg" alt="Azizur Rahaman" class="relative w-64 h-64 sm:w-80 sm:h-80 object-cover rounded-3xl shadow-2xl border-4 border-white dark:border-gray-800" />
         <div class="absolute -bottom-4 -left-4 px-3 py-2 rounded-xl bg-white dark:bg-gray-900 shadow-lg border border-gray-200 dark:border-gray-800 text-xs">
-          <div class="flex items-center gap-2"><i class="fa-solid fa-rocket text-brand-600"></i><span class="font-semibold">5</span> live projects</div>
+          <div class="flex items-center gap-2"><i class="fa-solid fa-rocket text-brand-600"></i><span class="font-semibold">6</span> live projects</div>
         </div>
         <div class="absolute -top-4 -right-4 px-3 py-2 rounded-xl bg-emerald-500 text-white shadow-lg text-xs font-medium">
           <i class="fa-solid fa-circle-check mr-1"></i> Available
@@ -182,9 +182,9 @@
 <!-- ================= STATS ================= -->
 <section class="py-12 border-y border-gray-200 dark:border-gray-800">
   <div class="max-w-6xl mx-auto px-5 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-    <div data-count="5" data-suffix="+"><div class="text-3xl sm:text-4xl font-bold gradient-text">0</div><p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Live Projects</p></div>
+    <div data-count="6" data-suffix="+"><div class="text-3xl sm:text-4xl font-bold gradient-text">0</div><p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Projects</p></div>
     <div data-count="2.3" data-suffix="+" data-decimal="1"><div class="text-3xl sm:text-4xl font-bold gradient-text">0</div><p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Years Exp</p></div>
-    <div data-count="3"><div class="text-3xl sm:text-4xl font-bold gradient-text">0</div><p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Certifications</p></div>
+    <div data-count="2"><div class="text-3xl sm:text-4xl font-bold gradient-text">0</div><p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Active Programs</p></div>
     <div data-count="8.99" data-decimal="2"><div class="text-3xl sm:text-4xl font-bold gradient-text">0</div><p class="text-sm text-gray-600 dark:text-gray-400 mt-1">B.Tech SGPA</p></div>
   </div>
 </section>
@@ -195,11 +195,11 @@
     <div class="text-center mb-10" data-aos="fade-up">
       <p class="text-brand-600 font-medium mb-2 tracking-wide text-sm uppercase">Portfolio</p>
       <h2 class="text-3xl sm:text-4xl font-bold mb-4">Featured Projects</h2>
-      <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Live demos, source code, and detailed breakdowns. Search or filter to explore.</p>
+      <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Live demos, source code, and detailed breakdowns. Search, filter, or explore by program.</p>
     </div>
 
     <!-- Search + Filter -->
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10" data-aos="fade-up">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6" data-aos="fade-up">
       <div class="relative w-full md:max-w-xs">
         <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
         <input id="projectSearch" type="text" placeholder="Search projects, tech..."
@@ -208,22 +208,31 @@
       <div class="flex flex-wrap gap-2">
         <button data-filter="all" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-brand-600 text-white transition">All</button>
         <button data-filter="ml" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition">ML</button>
-        <button data-filter="bi" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition">BI</button>
+        <button data-filter="bi" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition">BI / Tableau</button>
         <button data-filter="web" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition">Web</button>
         <button data-filter="stats" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition">Statistics</button>
       </div>
     </div>
 
+    <!-- Program filter -->
+    <div class="flex flex-wrap gap-2 mb-10 text-xs" data-aos="fade-up">
+      <span class="text-gray-500 py-1.5">By program:</span>
+      <button data-program="all" class="program-btn px-3 py-1 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 transition">All</button>
+      <button data-program="pgdba" class="program-btn px-3 py-1 rounded-full border border-amber-300 dark:border-amber-700 text-amber-700 dark:text-amber-300 hover:bg-amber-50 dark:hover:bg-amber-900/20 transition">PGDBA</button>
+      <button data-program="dsmaster" class="program-btn px-3 py-1 rounded-full border border-purple-300 dark:border-purple-700 text-purple-700 dark:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition">DS Masters</button>
+      <button data-program="personal" class="program-btn px-3 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition">Personal</button>
+    </div>
+
     <div id="projectsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <!-- 1. Sales & Invoice Tracking -->
-      <article data-cat="web" data-keywords="sales invoice tracking system full-stack python django flask sql react crud" data-project="invoice"
+      <!-- 1. Sales & Invoice Tracking (PGDBA) -->
+      <article data-cat="web" data-program="pgdba" data-keywords="sales invoice tracking system full-stack python flask sql dashboard pgdba business administration" data-project="invoice"
         class="project-card relative group rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-2xl cursor-pointer" onclick="openProject('invoice')" data-aos="fade-up">
         <div class="h-44 overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
           <img src="assets/projects/invoice.png" alt="Sales & Invoice Tracking" class="project-img w-full h-full object-cover" />
           <div class="absolute top-3 left-3 flex gap-1">
             <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500 text-white font-semibold">● LIVE</span>
-            <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/90 dark:bg-gray-900/90 text-gray-700 dark:text-gray-300 font-medium">Nov 2026</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500 text-white font-semibold">PGDBA</span>
           </div>
         </div>
         <div class="p-5">
@@ -232,7 +241,7 @@
             <span class="text-xs px-2 py-0.5 rounded bg-purple-50 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300">SQL</span>
           </div>
           <h3 class="font-semibold text-lg mb-1">Sales & Invoice Tracking System</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400">End-to-end web app for tracking sales, generating invoices, and monitoring revenue in real time.</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">End-to-end web app for tracking sales, generating invoices, and monitoring revenue. Built for PGDBA program.</p>
           <div class="mt-3 flex items-center justify-between text-xs text-gray-500">
             <span><i class="fa-solid fa-star text-amber-500 mr-1"></i>Flagship project</span>
             <span class="text-brand-600 font-medium">View details →</span>
@@ -240,14 +249,38 @@
         </div>
       </article>
 
-      <!-- 2. Loan Prediction -->
-      <article data-cat="ml" data-keywords="loan prediction machine learning classification logistic regression random forest credit risk" data-project="loan"
-        class="project-card relative group rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-2xl cursor-pointer" onclick="openProject('loan')" data-aos="fade-up" data-aos-delay="100">
+      <!-- 2. Student Data Analysis (Tableau - PGDBA) -->
+      <article data-cat="bi" data-program="pgdba" data-keywords="student data analysis tableau dashboard visualization education analytics pgdba business administration" data-project="student"
+        class="project-card relative group rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-2xl cursor-pointer" onclick="openProject('student')" data-aos="fade-up" data-aos-delay="100">
+        <div class="h-44 overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
+          <img src="assets/projects/student.png" alt="Student Data Analysis" class="project-img w-full h-full object-cover" />
+          <div class="absolute top-3 left-3 flex gap-1">
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-orange-500 text-white font-semibold">Tableau</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500 text-white font-semibold">PGDBA</span>
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xs px-2 py-0.5 rounded bg-orange-50 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">Tableau</span>
+            <span class="text-xs px-2 py-0.5 rounded bg-purple-50 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300">Analytics</span>
+          </div>
+          <h3 class="font-semibold text-lg mb-1">Student Data Analysis (Tableau)</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Interactive Tableau dashboard analyzing student performance, attendance, and demographic trends.</p>
+          <div class="mt-3 flex items-center justify-between text-xs text-gray-500">
+            <span><i class="fa-solid fa-chart-pie text-orange-500 mr-1"></i>5 dashboards</span>
+            <span class="text-brand-600 font-medium">View details →</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. Loan Prediction (DS Masters) -->
+      <article data-cat="ml" data-program="dsmaster" data-keywords="loan prediction machine learning classification logistic regression random forest credit risk data brio academy ds masters" data-project="loan"
+        class="project-card relative group rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-2xl cursor-pointer" onclick="openProject('loan')" data-aos="fade-up" data-aos-delay="200">
         <div class="h-44 overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
           <img src="assets/projects/loan.png" alt="Loan Prediction" class="project-img w-full h-full object-cover" />
           <div class="absolute top-3 left-3 flex gap-1">
             <span class="text-[10px] px-2 py-0.5 rounded-full bg-brand-600 text-white font-semibold">ML</span>
-            <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/90 dark:bg-gray-900/90 text-gray-700 dark:text-gray-300 font-medium">Nov 2026</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-600 text-white font-semibold">DS Masters</span>
           </div>
         </div>
         <div class="p-5">
@@ -256,7 +289,7 @@
             <span class="text-xs px-2 py-0.5 rounded bg-purple-50 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300">Python</span>
           </div>
           <h3 class="font-semibold text-lg mb-1">Loan Prediction System</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400">Predicts loan approval using ML classifiers with feature engineering and model evaluation.</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">ML classifier predicting loan approval with feature engineering and model evaluation. Built during DS Masters.</p>
           <div class="mt-3 flex items-center justify-between text-xs text-gray-500">
             <span><i class="fa-solid fa-chart-line text-brand-600 mr-1"></i>~89% accuracy</span>
             <span class="text-brand-600 font-medium">View details →</span>
@@ -264,14 +297,14 @@
         </div>
       </article>
 
-      <!-- 3. Telecom Factor Analysis -->
-      <article data-cat="stats" data-keywords="telecom factor analysis EFA CFA SEM structural equation modeling R python psych lavaan statistics" data-project="telecom"
-        class="project-card relative group rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-2xl cursor-pointer" onclick="openProject('telecom')" data-aos="fade-up" data-aos-delay="200">
+      <!-- 4. Telecom Factor Analysis (DS Masters) -->
+      <article data-cat="stats" data-program="dsmaster" data-keywords="telecom factor analysis EFA CFA SEM structural equation modeling R python lavaan psych statistics data brio academy ds masters" data-project="telecom"
+        class="project-card relative group rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-2xl cursor-pointer" onclick="openProject('telecom')" data-aos="fade-up">
         <div class="h-44 overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
           <img src="assets/projects/telecom.png" alt="Telecom Factor Analysis" class="project-img w-full h-full object-cover" />
           <div class="absolute top-3 left-3 flex gap-1">
             <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-600 text-white font-semibold">Advanced Stats</span>
-            <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/90 dark:bg-gray-900/90 text-gray-700 dark:text-gray-300 font-medium">Nov 2026</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-600 text-white font-semibold">DS Masters</span>
           </div>
         </div>
         <div class="p-5">
@@ -281,7 +314,7 @@
             <span class="text-xs px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300">SEM</span>
           </div>
           <h3 class="font-semibold text-lg mb-1">Telecom Factor Analysis</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400">Multi-stage analysis: EFA → CFA → SEM to model customer satisfaction drivers in telecom.</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Multi-stage analysis: EFA → CFA → SEM modeling customer satisfaction drivers. DS Masters capstone.</p>
           <div class="mt-3 flex items-center justify-between text-xs text-gray-500">
             <span><i class="fa-solid fa-diagram-project text-purple-600 mr-1"></i>3-method pipeline</span>
             <span class="text-brand-600 font-medium">View details →</span>
@@ -289,12 +322,15 @@
         </div>
       </article>
 
-      <!-- 4. Power BI Dashboard -->
-      <article data-cat="bi" data-keywords="power bi dashboard sales geographic DAX enterprise analytics visualization" data-project="powerbi"
-        class="project-card relative group rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-2xl cursor-pointer" onclick="openProject('powerbi')" data-aos="fade-up">
+      <!-- 5. Power BI Dashboard (Personal) -->
+      <article data-cat="bi" data-program="personal" data-keywords="power bi dashboard sales geographic DAX enterprise analytics visualization personal project" data-project="powerbi"
+        class="project-card relative group rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-2xl cursor-pointer" onclick="openProject('powerbi')" data-aos="fade-up" data-aos-delay="100">
         <div class="h-44 overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
           <img src="assets/projects/powerbi.png" alt="Power BI Dashboard" class="project-img w-full h-full object-cover" />
-          <div class="absolute top-3 left-3"><span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500 text-white font-semibold">BI</span></div>
+          <div class="absolute top-3 left-3 flex gap-1">
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500 text-white font-semibold">BI</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-gray-600 text-white font-semibold">Personal</span>
+          </div>
         </div>
         <div class="p-5">
           <div class="flex items-center gap-2 mb-2">
@@ -310,12 +346,15 @@
         </div>
       </article>
 
-      <!-- 5. Email Spam Detection -->
-      <article data-cat="ml" data-keywords="email spam detection NLP naive bayes text classification TF-IDF machine learning" data-project="spam"
-        class="project-card relative group rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-2xl cursor-pointer" onclick="openProject('spam')" data-aos="fade-up" data-aos-delay="100">
+      <!-- 6. Email Spam Detection (Personal) -->
+      <article data-cat="ml" data-program="personal" data-keywords="email spam detection NLP naive bayes text classification TF-IDF machine learning personal project" data-project="spam"
+        class="project-card relative group rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-2xl cursor-pointer" onclick="openProject('spam')" data-aos="fade-up" data-aos-delay="200">
         <div class="h-44 overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
           <img src="assets/projects/spam.png" alt="Email Spam Detection" class="project-img w-full h-full object-cover" />
-          <div class="absolute top-3 left-3"><span class="text-[10px] px-2 py-0.5 rounded-full bg-brand-600 text-white font-semibold">NLP</span></div>
+          <div class="absolute top-3 left-3 flex gap-1">
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-brand-600 text-white font-semibold">NLP</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-gray-600 text-white font-semibold">Personal</span>
+          </div>
         </div>
         <div class="p-5">
           <div class="flex items-center gap-2 mb-2">
@@ -344,10 +383,10 @@
       <p class="text-brand-600 font-medium mb-2 tracking-wide text-sm uppercase">About Me</p>
       <h2 class="text-3xl sm:text-4xl font-bold mb-6">From Operations to Data Science</h2>
       <p class="text-gray-600 dark:text-gray-400 mb-4">
-        I started as a CSE graduate fascinated by how data could tell stories. After 2.3+ years at <strong class="text-gray-800 dark:text-gray-200">Concentrix</strong> and <strong class="text-gray-800 dark:text-gray-200">Wipro</strong> optimizing enterprise operations, I've shifted focus to full-time data science and analytics.
+        I started as a CSE graduate fascinated by how data could tell stories. After 2.3+ years at <strong class="text-gray-800 dark:text-gray-200">Concentrix</strong> and <strong class="text-gray-800 dark:text-gray-200">Wipro</strong> optimizing enterprise operations, I've shifted focus to data science and analytics.
       </p>
       <p class="text-gray-600 dark:text-gray-400 mb-6">
-        In November 2026 alone, I completed <strong>5 end-to-end projects</strong> — from a full-stack invoice system to a multi-method SEM analysis on telecom data. My goal: bridge operational rigor with analytical depth.
+        I've completed a <strong>Data Science Masters Program</strong> at Data Brio Academy and am currently pursuing a <strong>Corporate Post Graduate Diploma in Business Administration (PGDBA)</strong>, where I'm building business-focused analytics projects in Tableau and full-stack development.
       </p>
       <div class="grid sm:grid-cols-2 gap-3 text-sm">
         <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-600 w-4"></i> Kolkata, West Bengal, India</div>
@@ -363,15 +402,15 @@
         <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Currently Focused On</span>
       </div>
       <ul class="space-y-3 text-sm">
-        <li class="flex items-start gap-2"><i class="fa-solid fa-brain text-brand-600 mt-0.5"></i> Advanced ML &amp; feature engineering</li>
-        <li class="flex items-start gap-2"><i class="fa-solid fa-diagram-project text-brand-600 mt-0.5"></i> Structural Equation Modeling (SEM)</li>
+        <li class="flex items-start gap-2"><i class="fa-solid fa-graduation-cap text-brand-600 mt-0.5"></i> PGDBA (Corporate Post Graduate Diploma)</li>
+        <li class="flex items-start gap-2"><i class="fa-solid fa-chart-line text-brand-600 mt-0.5"></i> Tableau dashboarding &amp; business analytics</li>
         <li class="flex items-start gap-2"><i class="fa-solid fa-code text-brand-600 mt-0.5"></i> Full-stack data applications</li>
-        <li class="flex items-start gap-2"><i class="fa-solid fa-database text-brand-600 mt-0.5"></i> SQL for analytics at scale</li>
+        <li class="flex items-start gap-2"><i class="fa-solid fa-brain text-brand-600 mt-0.5"></i> Advanced ML &amp; feature engineering</li>
       </ul>
       <div class="mt-5 pt-4 border-t border-gray-200 dark:border-gray-800">
         <p class="text-xs text-gray-500 mb-2">Latest project</p>
-        <a href="#projects" onclick="openProject('invoice')" class="text-sm font-medium text-brand-600 hover:underline flex items-center gap-1">
-          Sales & Invoice Tracking System <i class="fa-solid fa-arrow-right text-xs"></i>
+        <a href="#projects" onclick="event.preventDefault(); openProject('student')" class="text-sm font-medium text-brand-600 hover:underline flex items-center gap-1">
+          Student Data Analysis (Tableau) <i class="fa-solid fa-arrow-right text-xs"></i>
         </a>
       </div>
     </div>
@@ -407,8 +446,8 @@
         <h3 class="font-semibold mb-5 flex items-center gap-2"><i class="fa-solid fa-chart-simple text-brand-600"></i> BI &amp; Web</h3>
         <div class="space-y-4">
           <div><div class="flex justify-between text-sm mb-1"><span>Power BI</span><span class="text-gray-500">88%</span></div><div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden"><div class="skill-bar-fill h-full bg-gradient-to-r from-amber-400 to-orange-500" data-width="88%" style="width:0%"></div></div></div>
+          <div><div class="flex justify-between text-sm mb-1"><span>Tableau</span><span class="text-gray-500">80%</span></div><div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden"><div class="skill-bar-fill h-full bg-gradient-to-r from-orange-400 to-red-500" data-width="80%" style="width:0%"></div></div></div>
           <div><div class="flex justify-between text-sm mb-1"><span>Excel</span><span class="text-gray-500">85%</span></div><div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden"><div class="skill-bar-fill h-full bg-gradient-to-r from-emerald-400 to-green-500" data-width="85%" style="width:0%"></div></div></div>
-          <div><div class="flex justify-between text-sm mb-1"><span>HTML / CSS / JS</span><span class="text-gray-500">75%</span></div><div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden"><div class="skill-bar-fill h-full bg-gradient-to-r from-pink-400 to-rose-500" data-width="75%" style="width:0%"></div></div></div>
           <div><div class="flex justify-between text-sm mb-1"><span>Full-Stack (Flask/Django)</span><span class="text-gray-500">72%</span></div><div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden"><div class="skill-bar-fill h-full bg-gradient-to-r from-cyan-400 to-blue-500" data-width="72%" style="width:0%"></div></div></div>
         </div>
       </div>
@@ -420,11 +459,11 @@
       <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">scikit-learn</span>
       <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">Matplotlib</span>
       <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">Seaborn</span>
+      <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">Tableau</span>
       <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">factor_analyzer</span>
-      <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">semopy / lavaan</span>
+      <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">lavaan / semopy</span>
       <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">Git</span>
       <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">Flask</span>
-      <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">R</span>
     </div>
   </div>
 </section>
@@ -438,16 +477,16 @@
     </div>
 
     <div class="relative border-l-2 border-brand-200 dark:border-brand-900 ml-4 space-y-8">
-      <!-- Upskilling -->
+      <!-- PGDBA -->
       <div class="relative pl-8 timeline-dot timeline-item" data-aos="fade-up">
         <div class="flex flex-wrap items-center gap-3 mb-1">
-          <h3 class="font-semibold text-lg">Independent Projects &amp; Upskilling</h3>
+          <h3 class="font-semibold text-lg">Corporate Post Graduate Diploma in Business Administration</h3>
           <span class="text-xs px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">Current</span>
         </div>
-        <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Self-directed · Oct 2026 – Present</p>
-        <p class="text-sm text-gray-600 dark:text-gray-400">Focused on full-stack data apps, ML pipelines, and advanced statistics (SEM). Completed 5 projects in Nov 2026.</p>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">PGDBA · Oct 2026 – Present</p>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Pursuing business administration with a focus on data-driven decision making, analytics, and full-stack applications.</p>
         <div class="timeline-details mt-2 text-xs text-brand-600">
-          <p>→ Sales &amp; Invoice Tracking System · Loan Prediction · Telecom EFA/CFA/SEM · Power BI Dashboard · Spam Detection</p>
+          <p>→ Projects: Sales &amp; Invoice Tracking System · Student Data Analysis (Tableau)</p>
         </div>
       </div>
 
@@ -486,16 +525,32 @@
 
     <div class="grid md:grid-cols-2 gap-6">
       <div class="space-y-4" data-aos="fade-right">
+        <!-- PGDBA -->
+        <div class="p-5 rounded-2xl bg-white dark:bg-gray-900 border-2 border-emerald-300 dark:border-emerald-700 hover:border-emerald-500 transition relative">
+          <div class="absolute top-3 right-3 text-[10px] px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300 font-semibold flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> In Progress
+          </div>
+          <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">Oct 2026 – Present</div>
+          <h3 class="font-semibold">Corporate Post Graduate Diploma in Business Administration</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Focus on data-driven decision making, business analytics, and applied technology.</p>
+          <p class="text-xs text-brand-600 mt-2"><i class="fa-solid fa-folder-open mr-1"></i> Projects: Invoice Tracker · Tableau Student Analysis</p>
+        </div>
+
+        <!-- B.Tech -->
         <div class="p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-brand-400 transition">
           <div class="flex justify-between text-sm text-gray-500 dark:text-gray-400 mb-1"><span>2020 – 2024</span><span>SGPA 8.99/10</span></div>
           <h3 class="font-semibold">B.Tech in Computer Science</h3>
           <p class="text-sm text-gray-600 dark:text-gray-400">Meghnad Saha Institute of Technology, MAKAUT</p>
         </div>
+
+        <!-- HS -->
         <div class="p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-brand-400 transition">
           <div class="flex justify-between text-sm text-gray-500 dark:text-gray-400 mb-1"><span>2018 – 2020</span><span>87%</span></div>
           <h3 class="font-semibold">Higher Secondary</h3>
           <p class="text-sm text-gray-600 dark:text-gray-400">Sanskar Vidya, CBSE, Aurangabad</p>
         </div>
+
+        <!-- SS -->
         <div class="p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-brand-400 transition">
           <div class="flex justify-between text-sm text-gray-500 dark:text-gray-400 mb-1"><span>2016 – 2018</span><span>83.2%</span></div>
           <h3 class="font-semibold">Secondary School</h3>
@@ -504,23 +559,19 @@
       </div>
 
       <div class="space-y-4" data-aos="fade-left">
-        <div class="p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-brand-400 transition">
+        <!-- Data Science Masters -->
+        <div class="p-5 rounded-2xl bg-white dark:bg-gray-900 border border-purple-200 dark:border-purple-800 hover:border-purple-500 transition">
           <div class="flex justify-between items-start mb-2">
-            <div class="text-sm text-brand-600 font-medium">2024</div>
-            <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300"><i class="fa-solid fa-check mr-1"></i>Completed</span>
+            <div class="text-sm text-purple-600 font-medium">2024</div>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-purple-50 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300"><i class="fa-solid fa-check mr-1"></i>Completed</span>
           </div>
           <h3 class="font-semibold">Data Science Masters Program</h3>
           <p class="text-sm text-gray-600 dark:text-gray-400">Data Brio Academy — Python, ML, Power BI, SQL, Statistics</p>
-          <p class="text-xs text-gray-500 mt-2">Credential ID: DB-2024-XXXX</p>
+          <p class="text-xs text-brand-600 mt-2"><i class="fa-solid fa-folder-open mr-1"></i> Projects: Loan Prediction · Telecom EFA/CFA/SEM</p>
+          <p class="text-xs text-gray-500 mt-1">Credential ID: DB-2024-XXXX</p>
         </div>
-        <div class="p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-brand-400 transition">
-          <div class="flex justify-between items-start mb-2">
-            <div class="text-sm text-brand-600 font-medium">2022 – 2023</div>
-            <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300"><i class="fa-solid fa-check mr-1"></i>Completed</span>
-          </div>
-          <h3 class="font-semibold">Programmer Certification</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400">Amity Computer Academy — C, DS, Advanced Python</p>
-        </div>
+
+        <!-- Frontend Intern -->
         <div class="p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-brand-400 transition">
           <div class="flex justify-between items-start mb-2">
             <div class="text-sm text-brand-600 font-medium">2022</div>
@@ -581,7 +632,6 @@
     </div>
     <button onclick="closeProject()" class="w-9 h-9 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center justify-center transition"><i class="fa-solid fa-xmark"></i></button>
   </div>
-
   <div id="drawerContent" class="p-5 sm:p-6"></div>
 </div>
 
@@ -625,7 +675,7 @@ themeToggle.addEventListener('click', () => {
 document.getElementById('menuBtn').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('hidden'));
 document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => document.getElementById('mobileMenu').classList.add('hidden')));
 
-/* ---------- Scroll progress + nav highlight + back-to-top ---------- */
+/* ---------- Scroll / nav / back-to-top ---------- */
 const progress = document.getElementById('scrollProgress');
 const backToTop = document.getElementById('backToTop');
 const navItems = document.querySelectorAll('[data-nav]');
@@ -643,7 +693,7 @@ window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 /* ---------- Typewriter ---------- */
-const roles = ['Data Scientist','ML Engineer','BI Analyst','Full-Stack Developer','Problem Solver'];
+const roles = ['Data Scientist','ML Engineer','BI Analyst','Tableau Analyst','Full-Stack Developer','Problem Solver'];
 const tw = document.getElementById('typewriter');
 let ri = 0, ci = 0, del = false;
 (function tick(){
@@ -680,10 +730,10 @@ document.querySelectorAll('.skill-bar-fill').forEach(b => skillObs.observe(b));
 new Chart(document.getElementById('radarChart'), {
   type: 'radar',
   data: {
-    labels: ['Python','SQL','ML','Statistics','Power BI','Web Dev'],
+    labels: ['Python','SQL','ML','Statistics','Power BI','Tableau'],
     datasets: [{
       label: 'Proficiency',
-      data: [90,85,82,78,88,72],
+      data: [90,85,82,78,88,80],
       backgroundColor: 'rgba(51,120,255,0.15)',
       borderColor: '#1b56f5',
       borderWidth: 2,
@@ -707,13 +757,14 @@ new Chart(document.getElementById('radarChart'), {
 });
 
 /* ---------- Filter + Search ---------- */
-let activeFilter = 'all', searchTerm = '';
+let activeFilter = 'all', activeProgram = 'all', searchTerm = '';
 function applyFilters() {
   let visible = 0;
   document.querySelectorAll('#projectsGrid article').forEach(card => {
     const matchFilter = activeFilter === 'all' || card.dataset.cat === activeFilter;
+    const matchProgram = activeProgram === 'all' || card.dataset.program === activeProgram;
     const matchSearch = !searchTerm || card.dataset.keywords.includes(searchTerm) || card.textContent.toLowerCase().includes(searchTerm);
-    const show = matchFilter && matchSearch;
+    const show = matchFilter && matchProgram && matchSearch;
     card.style.display = show ? '' : 'none';
     if (show) visible++;
   });
@@ -728,21 +779,30 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     applyFilters();
   });
 });
+document.querySelectorAll('.program-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.program-btn').forEach(b => { b.classList.remove('bg-gray-200','dark:bg-gray-800'); });
+    btn.classList.add('bg-gray-200','dark:bg-gray-800');
+    activeProgram = btn.dataset.program;
+    applyFilters();
+  });
+});
 document.getElementById('projectSearch').addEventListener('input', e => {
   searchTerm = e.target.value.toLowerCase().trim();
   applyFilters();
 });
 
-/* ---------- Project data ---------- */
+/* ---------- Projects ---------- */
 const projects = {
   invoice: {
     title: 'Sales & Invoice Tracking System',
-    cat: 'Full-Stack · Web App',
+    cat: 'PGDBA · Full-Stack Web App',
     date: 'November 2026',
+    program: 'Corporate Post Graduate Diploma in Business Administration',
     tags: ['Python','Flask','SQL','HTML/CSS/JS','Chart.js','Bootstrap'],
-    live: 'https://github.com/azi05122001', // replace with real deployed URL
+    live: 'https://github.com/azi05122001',
     code: 'https://github.com/azi05122001',
-    overview: 'A complete web application to manage products, generate invoices, track customer sales, and view real-time revenue analytics. Designed as a practical tool for small-to-medium businesses.',
+    overview: 'A complete web application to manage products, generate invoices, track customer sales, and view real-time revenue analytics. Developed as the flagship applied project for my PGDBA program.',
     problem: 'Small businesses rely on spreadsheets and manual invoices, leading to lost sales data, duplicate entries, and no visibility into revenue trends.',
     solution: 'Built a full-stack app with a normalized SQL schema, auto-incrementing invoice generator, and a live analytics dashboard. Includes role-based access for admin vs. staff.',
     process: ['Designed ER diagram → normalized schema (Products, Customers, Invoices, LineItems)',
@@ -755,21 +815,40 @@ const projects = {
               'Handles 1,000+ invoices with <200ms query time',
               'Fully responsive — works on desktop and mobile'],
     stack_extra: 'SQLite (dev) / PostgreSQL-ready · Jinja2 templates',
-    chart: {
-      type: 'line',
-      label: 'Monthly Revenue (₹)',
-      labels: ['Jun','Jul','Aug','Sep','Oct','Nov'],
-      data: [42000, 58000, 51000, 67000, 74000, 89000]
-    },
+    chart: { type: 'line', label: 'Monthly Revenue (₹)', labels: ['Jun','Jul','Aug','Sep','Oct','Nov'], data: [42000, 58000, 51000, 67000, 74000, 89000] },
     images: ['assets/projects/invoice.png','assets/projects/invoice-2.png']
+  },
+  student: {
+    title: 'Student Data Analysis (Tableau)',
+    cat: 'PGDBA · Tableau Dashboard',
+    date: 'November 2026',
+    program: 'Corporate Post Graduate Diploma in Business Administration',
+    tags: ['Tableau','Excel','Data Cleaning','Dashboard Design','Storytelling'],
+    live: '#', code: 'https://github.com/azi05122001',
+    overview: 'A multi-dashboard Tableau analytics project analyzing student academic performance, attendance, and demographic patterns — turning raw education data into actionable insights for administrators.',
+    problem: 'Educational institutions collect large volumes of student data but lack interactive tools to identify at-risk students, track performance trends, or spot demographic patterns.',
+    solution: 'Built 5 interlinked Tableau dashboards: Overview, Performance Trends, Attendance Analysis, Demographic Breakdown, and At-Risk Student Identifier.',
+    process: ['Data cleaning + transformation in Excel (nulls, duplicates, type coercion)',
+              'Created calculated fields for % change, weighted averages, at-risk score',
+              'Designed 5 dashboards with filters, parameters, and actions',
+              'Built drill-down from school → grade → section → student',
+              'Added story points to narrate key insights for stakeholders'],
+    results: ['Identified 15% of students as at-risk based on combined attendance + performance score',
+              'Revealed a strong correlation between attendance and final grade (r = 0.72)',
+              'Enabled school admins to drill down into any student in 2 clicks',
+              '5 dashboards · 3 filter types · 2 parameter controls'],
+    stack_extra: 'Tableau Public / Desktop · Excel · Calculated Fields · Story Points',
+    chart: { type: 'bar', label: 'Average Score by Subject', labels: ['Math','Science','English','History','CS'], data: [72, 78, 81, 74, 88] },
+    images: ['assets/projects/student.png','assets/projects/student-2.png']
   },
   loan: {
     title: 'Loan Prediction System',
-    cat: 'Machine Learning · Classification',
-    date: 'November 2026',
+    cat: 'DS Masters · ML Classification',
+    date: '2024 · Data Science Masters',
+    program: 'Data Science Masters Program — Data Brio Academy',
     tags: ['Python','Pandas','scikit-learn','Matplotlib','Seaborn','Flask'],
     live: '#', code: 'https://github.com/azi05122001',
-    overview: 'A predictive ML system that determines whether a loan application should be approved based on applicant demographics, income, credit history, and loan attributes.',
+    overview: 'A predictive ML system that determines whether a loan application should be approved based on applicant demographics, income, credit history, and loan attributes. Completed as part of the Data Science Masters Program.',
     problem: 'Manual loan approval is slow and inconsistent, leading to high default rates and missed good customers.',
     solution: 'Trained and compared multiple classifiers (Logistic Regression, Random Forest, XGBoost) with rigorous preprocessing and cross-validation.',
     process: ['EDA: missing values, class imbalance, feature distributions',
@@ -782,21 +861,17 @@ const projects = {
               'Precision 86%, Recall 84% — balanced for real-world use',
               'Identified credit history as strongest predictor'],
     stack_extra: 'Jupyter · joblib for model serialization',
-    chart: {
-      type: 'bar',
-      label: 'Model Comparison (Accuracy %)',
-      labels: ['Logistic Reg.','Random Forest','XGBoost'],
-      data: [82, 89, 87]
-    },
+    chart: { type: 'bar', label: 'Model Comparison (Accuracy %)', labels: ['Logistic Reg.','Random Forest','XGBoost'], data: [82, 89, 87] },
     images: ['assets/projects/loan.png','assets/projects/loan-2.png']
   },
   telecom: {
     title: 'Telecom Factor Analysis (EFA → CFA → SEM)',
-    cat: 'Advanced Statistics · Structural Equation Modeling',
-    date: 'November 2026',
+    cat: 'DS Masters · Advanced Statistics',
+    date: '2024 · Data Science Masters',
+    program: 'Data Science Masters Program — Data Brio Academy',
     tags: ['R / Python','factor_analyzer','lavaan / semopy','Pandas','Matplotlib'],
     live: '#', code: 'https://github.com/azi05122001',
-    overview: 'A multi-stage statistical study modeling customer satisfaction drivers in the telecom sector. Uses exploratory factor analysis (EFA) to discover latent constructs, confirmatory factor analysis (CFA) to validate the measurement model, and structural equation modeling (SEM) to test causal relationships.',
+    overview: 'A multi-stage statistical study modeling customer satisfaction drivers in the telecom sector. Uses exploratory factor analysis (EFA) to discover latent constructs, confirmatory factor analysis (CFA) to validate the measurement model, and structural equation modeling (SEM) to test causal relationships. Completed as part of the Data Science Masters Program.',
     problem: 'Telecom companies collect large survey data but struggle to identify which latent factors (network quality, pricing, customer service) most impact satisfaction and loyalty.',
     solution: 'Built a rigorous 3-stage pipeline: EFA to discover dimensions → CFA to validate the measurement model → SEM to test direct and indirect effects on satisfaction and loyalty.',
     process: ['Data cleaning + reverse-coding of survey items',
@@ -810,18 +885,14 @@ const projects = {
               'Satisfaction fully mediated the effect of pricing on loyalty',
               'Path diagram + factor loadings presented in final report'],
     stack_extra: 'psych · lavaan (R) · semopy (Python)',
-    chart: {
-      type: 'bar',
-      label: 'Variance Explained by Factor (%)',
-      labels: ['Network Quality','Pricing','Customer Service','Brand Image'],
-      data: [24, 18, 15, 11]
-    },
+    chart: { type: 'bar', label: 'Variance Explained by Factor (%)', labels: ['Network Quality','Pricing','Customer Service','Brand Image'], data: [24, 18, 15, 11] },
     images: ['assets/projects/telecom.png','assets/projects/telecom-2.png']
   },
   powerbi: {
     title: 'Power BI Sales Dashboard',
-    cat: 'Business Intelligence',
+    cat: 'Personal · Business Intelligence',
     date: 'November 2026',
+    program: 'Personal Project',
     tags: ['Power BI','DAX','Excel','Data Modeling'],
     live: '#', code: 'https://github.com/azi05122001',
     overview: 'An interactive enterprise dashboard to monitor geographic sales operations and dynamic KPIs, with drill-downs from country → region → city.',
@@ -835,18 +906,14 @@ const projects = {
               'Reduced report prep time from 2 hours to 5 minutes',
               'KPI dashboard with real-time filters and drill-downs'],
     stack_extra: 'Power Query · Star Schema · Bookmarks',
-    chart: {
-      type: 'doughnut',
-      label: 'Sales by Region',
-      labels: ['East','West','North','South'],
-      data: [35, 28, 22, 15]
-    },
+    chart: { type: 'doughnut', label: 'Sales by Region', labels: ['East','West','North','South'], data: [35, 28, 22, 15] },
     images: ['assets/projects/powerbi.png','assets/projects/powerbi-2.png']
   },
   spam: {
     title: 'Email Spam Detection',
-    cat: 'Natural Language Processing',
+    cat: 'Personal · NLP',
     date: 'Earlier 2025',
+    program: 'Personal Project',
     tags: ['Python','NLP','scikit-learn','TF-IDF'],
     live: '#', code: 'https://github.com/azi05122001',
     overview: 'A text classifier that distinguishes spam from legitimate emails using TF-IDF vectorization and Naive Bayes / SVM.',
@@ -860,12 +927,7 @@ const projects = {
               'Precision 0.96 / Recall 0.94',
               'Fast inference — handles 1,000 emails/sec'],
     stack_extra: 'NLTK · CountVectorizer · GridSearchCV',
-    chart: {
-      type: 'bar',
-      label: 'Classifier Performance (%)',
-      labels: ['Accuracy','Precision','Recall','F1'],
-      data: [97, 96, 94, 95]
-    },
+    chart: { type: 'bar', label: 'Classifier Performance (%)', labels: ['Accuracy','Precision','Recall','F1'], data: [97, 96, 94, 95] },
     images: ['assets/projects/spam.png','assets/projects/spam-2.png']
   }
 };
@@ -882,11 +944,15 @@ function openProject(key) {
   const chartHTML = `<div class="mt-4"><p class="text-xs uppercase tracking-wide text-gray-500 mb-2">${p.chart.label}</p><div class="h-48 bg-white dark:bg-gray-800 rounded-xl p-2 border border-gray-200 dark:border-gray-700"><canvas id="${chartId}"></canvas></div></div>`;
 
   document.getElementById('drawerContent').innerHTML = `
-    <div class="flex items-start justify-between gap-3 mb-4">
+    <div class="flex items-start justify-between gap-3 mb-2">
       <div>
         <h2 class="text-2xl font-bold mb-1">${p.title}</h2>
         <p class="text-xs text-gray-500">${p.date}</p>
       </div>
+    </div>
+
+    <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-[11px] font-medium mb-4">
+      <i class="fa-solid fa-graduation-cap"></i> ${p.program}
     </div>
 
     <div class="flex flex-wrap gap-2 mb-5">
@@ -915,14 +981,12 @@ function openProject(key) {
     </div>
   `;
 
-  // Drawer
   const drawer = document.getElementById('projectDrawer');
   const backdrop = document.getElementById('drawerBackdrop');
   drawer.classList.remove('closed');
   backdrop.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
 
-  // Render chart after DOM insertion
   setTimeout(() => {
     const ctx = document.getElementById(chartId);
     if (!ctx) return;
@@ -964,8 +1028,7 @@ document.getElementById('drawerBackdrop').addEventListener('click', closeProject
 /* ---------- Lightbox ---------- */
 function openLightbox(i) {
   lightboxIdx = i;
-  const img = document.getElementById('lightboxImg');
-  img.src = currentProject.images[i];
+  document.getElementById('lightboxImg').src = currentProject.images[i];
   document.getElementById('lightbox').classList.remove('hidden');
   document.getElementById('lightbox').classList.add('flex');
 }
@@ -977,8 +1040,8 @@ function prevLightbox() { lightboxIdx = (lightboxIdx - 1 + currentProject.images
 document.addEventListener('keydown', e => {
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
   if (e.key === 'Escape') { closeProject(); closeLightbox(); }
-  if (['1','2','3','4','5'].includes(e.key)) {
-    const keys = ['invoice','loan','telecom','powerbi','spam'];
+  if (['1','2','3','4','5','6'].includes(e.key)) {
+    const keys = ['invoice','student','loan','telecom','powerbi','spam'];
     openProject(keys[parseInt(e.key) - 1]);
   }
   if (!document.getElementById('lightbox').classList.contains('hidden')) {
@@ -987,7 +1050,7 @@ document.addEventListener('keydown', e => {
   }
 });
 
-/* ---------- Copy email ---------- */
+/* ---------- Copy / toast ---------- */
 function copyEmail() {
   navigator.clipboard.writeText('your-email@example.com').then(() => showToast('Email copied to clipboard!'));
 }
@@ -1040,7 +1103,6 @@ document.querySelectorAll('a,button,.project-card').forEach(el => {
 
 /* ---------- Contact form ---------- */
 document.getElementById('contactForm').addEventListener('submit', e => {
-  // If formspree not configured, intercept for demo
   if (e.target.action.includes('YOUR_FORM_ID')) {
     e.preventDefault();
     showToast('Form not configured yet — email me directly!');
